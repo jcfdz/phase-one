@@ -1,0 +1,34 @@
+
+def encrypt(message, shift):
+    '''
+    encrypts lowercase text by shifting message letters down the alphabet, to
+    make message unreadable
+    message : str, text to encrypt
+    shift : int, >= 0
+    encrypted_message : str, encrypted text that is no longer readable
+    '''
+    encrypted_message = ''
+    for ch in message:
+        if ord('a') <= ch <= ord('z'):
+            new_ch = chr((ord(ch) - ord('a') + shift) % 26 + ord('a'))
+            encrypted_message += new_ch
+        else:
+            encrypted_message += ch
+    return encrypted_message
+
+def decrypt(ciphertext, shift):
+    '''
+    decrypts lowercase text by reversing encrypt() function to make message
+    readable
+    ciphertext : str, text to decrypt
+    shift : int, >= 0
+    encrypted_ciphertext : str, text that is deciphered and readable
+    '''
+    encrypted_ciphertext = ''
+    for ch in ciphertext:
+        if ord('a') <= ch <= ord('z'):
+            new_ch = chr((ord(ch) - ord('a') - shift) % 26 + ord('a'))
+            encrypted_ciphertext += new_ch
+        else:
+            encrypted_ciphertext += ch
+    return encrypted_ciphertext
