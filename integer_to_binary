@@ -1,0 +1,13 @@
+get_integer = int(input("Enter an integer (0...4294967295): "))
+
+while (get_integer < 0 or get_integer > (2**32)-1):
+    print(f"Sorry, {get_integer} is not in the right range.")
+    get_integer = int(input("Enter an integer (0...4294967295): "))
+else:
+    binary_integer = ''
+    new_get_integer = get_integer
+    for j in range(31, -1, -1):
+        bit = new_get_integer // (2 ** j)
+        binary_integer += str(bit)
+        new_get_integer = new_get_integer - bit * (2 ** j)
+    print(f"Binary representation of {get_integer} is {binary_integer}.")
